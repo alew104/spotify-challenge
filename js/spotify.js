@@ -19,6 +19,7 @@ function initApp(){
   $("#login-button").on('click', function() {
           loginWithSpotify();
       });
+  $('#playlistSearch').hide();
 }
 
 
