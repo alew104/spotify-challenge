@@ -67,12 +67,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
 })
 
 function parseIds(data) {
-  //data.map(function d(){
-    //var userId = d.["owner"].["id"];
-    //console.log(userId);
-    var playlistId = data[0].id;
+  for (var i = 0; i < data.length; i++){
+    var userId = data[i].owner.id;
+    console.log(userId);
+    var playlistId = data[i].id;
     console.log(playlistId);
-  //});
+  };
 }
 
   function getTracks (userId, playlistId){
