@@ -118,7 +118,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
-                  "trackArtist" : trackArtist,
+                  //"trackArtist" : trackArtist,
                   "trackAlbum" : trackAlbum,
                   "trackImage" : trackImage,
                   "trackCount" : 1
