@@ -9,6 +9,32 @@ var myApp = angular.module('myApp', [])
 
 
 
+$(document).ready(
+    function() {
+        initApp();
+    }
+);
+
+function initApp(){
+  $("#login-button").on('click', function() {
+          loginWithSpotify();
+      });
+}
+
+
+function loginWithSpotify() {
+        var client_id = '4042a231fe624583a694f1d6cf9e25b5';
+        var redirect_uri = 'http://static.echonest.com/playlistminer/index.html';
+        var scopes = 'playlist-modify-public';
+        if (document.location.hostname == 'localhost') {
+            redirect_uri = 'http://localhost:8000/index.html';
+        }
+        var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
+            '&response_type=token' +
+            '&scope=' + encodeURIComponent(scopes) +
+            '&redirect_uri=' + encodeURIComponent(redirect_uri);
+        document.location = url;
+    }
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
