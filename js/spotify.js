@@ -71,7 +71,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       console.log(userId);
       var playlistId = data[i].id;
       console.log(playlistId);
-      getTracks(userId, playlistId);
+      getTracks(userId, playlistId, $http);
     };
   }
 
