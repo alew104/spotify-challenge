@@ -72,14 +72,17 @@ function parseIds(data) {
     console.log(userId);
     var playlistId = data[i].id;
     console.log(playlistId);
+    getTracks(userId, playlistId);
   };
 }
 
   function getTracks (userId, playlistId){
       var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
       $http.get(tracksurl).success(function(response){
+        console.log("original")
         console.log(response);
         playlistTracks = response.items.items;
+        console.log("stored")
         console.log(playlistTracks);
       })
   }
