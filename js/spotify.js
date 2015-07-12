@@ -76,7 +76,7 @@ function parseIds(data) {
   };
 }
 
-  function getTracks (userId, playlistId){
+  function getTracks (userId, playlistId, $http){
       var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
       $http.get(tracksurl).success(function(response){
         console.log("original")
