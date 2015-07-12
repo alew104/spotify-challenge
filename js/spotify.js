@@ -61,6 +61,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
+      console.log(allTracks);
     })
   }
 
@@ -84,7 +85,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         success: function(threadsResults){
           playlistTracks = threadsResults.items;
           parseTracks(playlistTracks);
-          console.log(allTracks);
         }
         });
     }
@@ -107,7 +107,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
                   "trackImage" : trackImage,
                   "trackCount" : 1
               };
-              console.log(allTracks[trackName])
           } else {
             allTracks[trackName].trackCount++;
           }
