@@ -108,10 +108,11 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           var trackName = playlistTracks[i].track.name;
-          var trackArtist = '';
-          for (var j = 0; j < playlistTracks[i].artists.length; j++){
-              trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' ';
-          }
+          var trackArtist = playListTracks[i].artists.name;
+          console.log(trackArtist)
+          /*for (var j = 0; j < playlistTracks[i].artists.length; j++){
+              trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
+          }*/
           var trackAlbum = playlistTracks[i].track.album.name;
           var trackImage = playlistTracks[i].track.album.images[0].url;
           if (allTracks[trackName] == undefined){
