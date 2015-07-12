@@ -76,10 +76,15 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   }
 
     function getTracks (userId, playlistId, $http){
+      console.log(accessToken)
       $.ajax({
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Accept-Encoding' : 'gzip, deflate, compress',
           'Authorization': 'Bearer ' + accessToken,
+          'User-Agent' : 'Spotify API Console v0.1'
         },
         success: function(threadsResults){
           console.log(threadsResults);
