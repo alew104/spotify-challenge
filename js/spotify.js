@@ -80,7 +80,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
           Authorization: 'Bearer ' + accessToken,
-        }
+        },
         success: function(threadsResults){
           console.log(threadsResults);
         }
