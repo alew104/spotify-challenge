@@ -81,13 +81,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         headers: {
           Authorization: 'Bearer ' + accessToken,
         }
+        success: function(threadsResults){
+          console.log(threadsResults);
+        }
         /*dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         method: 'GET',*/
-
-          success: function(threadsResults){
-            console.log(threadsResults);
-          }
         });
 
         /*var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks" + ' ' + '-H' + '\"Authorization: Bearer ' + accessToken +'\"';
