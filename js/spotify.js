@@ -36,7 +36,7 @@ function isAuth(){
       accessToken = splitTwo[0];
       console.log(accessToken);
       $('#playlistSearch').show();
-      $('login-button').hide();
+      $('#loginForm').hide();
     }
 }
 
