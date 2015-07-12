@@ -12,18 +12,6 @@ var allTracks = {tracks:{
   }
 };
 
-
-var jsonObj = {members: {
-            host: "hostName",
-            viewers: {
-                user1: "value1",
-                user2: "value2",
-                user3: "value3"
-            }
-        }
-}
-
-
 $(document).ready(
     function() {
         initApp();
@@ -95,26 +83,22 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         },
         success: function(threadsResults){
           playlistTracks = threadsResults.items;
-          console.log(playlistTracks);
           parseTracks(playlistTracks);
+          console.log(allTracks);
         }
         });
     }
     function parseTracks (playlistTracks){
-      console.log("parsing tracks")
       for (var i = 0; i < playlistTracks.length; i++){
           console.log(playlistTracks[i]);
           var trackName = playlistTracks[i].track.name;
-          console.log(trackName)
           /*var trackArtist = playListTracks[i].artists[0].external_urls.name;
           console.log(trackArtist)*/
           /*for (var j = 0; j < playlistTracks[i].artists.length; j++){
               trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
           }*/
           var trackAlbum = playlistTracks[i].track.album.name;
-          console.log(trackAlbum)
           var trackImage = playlistTracks[i].track.album.images[0].url;
-          console.log(trackImage)
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
@@ -126,7 +110,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
               console.log(allTracks[trackName])
           } else {
             allTracks[trackName].trackCount++;
-            console.log(allTracks[trackName].trackCount);
           }
       }
     }
