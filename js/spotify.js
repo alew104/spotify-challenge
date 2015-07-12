@@ -70,7 +70,7 @@ function parseIds(data) {
   //data.map(function d(){
     //var userId = d.["owner"].["id"];
     //console.log(userId);
-    var playlistId = d[0].id;
+    var playlistId = data[0].id;
     console.log(playlistId);
   //});
 }
