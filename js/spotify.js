@@ -6,6 +6,7 @@
 var data;
 var baseUrl = 'https://api.spotify.com/v1/search?type=playlist&query='
 var myApp = angular.module('myApp', [])
+var accessToken;
 
 
 
@@ -20,6 +21,23 @@ function initApp(){
           loginWithSpotify();
       });
   $('#playlistSearch').hide();
+  isAuth();
+}
+
+function isAuth(){
+    var curURL = window.location.href;
+    var splitOne = curURL.split('=');
+    var splitTwo;
+    if (splitOne.length == 1){
+      $('login-button').show();
+      $('loginForm').append('<p>Login failed, please try again</p>');
+    } else {
+      splitTwo = splitOne[1].split('&');
+      accessToken = splitTwo[0];
+      console.log(accessToken);
+      $('#playlistSearch').show();
+      $('login-button').hide();
+    }
 }
 
 
