@@ -78,10 +78,13 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function getTracks (userId, playlistId, $http){
       $.ajax({
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
-        dataType: 'json',
+        headers: {
+          Authorization: 'Bearer ' + accessToken,
+        }
+        /*dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        method: 'GET',
-        Authorization: 'Bearer ' + accessToken,
+        method: 'GET',*/
+
           success: function(threadsResults){
             console.log(threadsResults);
           }
@@ -99,7 +102,11 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
 })
 
 
-
+/*$.ajax({
+                url:        'https://api.spotify.com/v1/users/bbc_playlister/playlists/4ozvRrHgk23R4syZv52XNz',
+           headers: {
+             'Authorization': 'Bearer ' + access_token
+           },*/
 
 /*var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
   $scope.audioObject = {}
