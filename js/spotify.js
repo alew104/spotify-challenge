@@ -64,28 +64,30 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       parseIds(data);
     })
   }
+
+  function parseIds(data) {
+    for (var i = 0; i < data.length; i++){
+      var userId = data[i].owner.id;
+      console.log(userId);
+      var playlistId = data[i].id;
+      console.log(playlistId);
+      getTracks(userId, playlistId);
+    };
+  }
+
+    function getTracks (userId, playlistId, $http){
+        var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
+        $http.get(tracksurl).success(function(response){
+          console.log("original")
+          console.log(response);
+          playlistTracks = response.items.items;
+          console.log("stored")
+          console.log(playlistTracks);
+        })
+    }
 })
 
-function parseIds(data) {
-  for (var i = 0; i < data.length; i++){
-    var userId = data[i].owner.id;
-    console.log(userId);
-    var playlistId = data[i].id;
-    console.log(playlistId);
-    getTracks(userId, playlistId);
-  };
-}
 
-  function getTracks (userId, playlistId, $http){
-      var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
-      $http.get(tracksurl).success(function(response){
-        console.log("original")
-        console.log(response);
-        playlistTracks = response.items.items;
-        console.log("stored")
-        console.log(playlistTracks);
-      })
-  }
 
 
 /*var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
