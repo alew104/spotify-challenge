@@ -56,13 +56,11 @@ loginWithSpotify = function() {
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
-  $scope.playlists = {};
   $scope.getPlaylists = function() {
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
-      data = $scope.playlists = response.playlists.items;
+      data = response.playlists.items;
       console.log(data);
-      console.log(data.id);
       parseIds(data);
     })
   }
@@ -70,9 +68,9 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
 
 function parseIds(data) {
   data.map(function d(){
-    var userId = d.owner.id;
-    console.log(userId);
-    var playlistId = d.id;
+    //var userId = d.["owner"].["id"];
+    //console.log(userId);
+    var playlistId = d["id"];
     console.log(playlistId);
   });
 }
