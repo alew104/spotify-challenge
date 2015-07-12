@@ -82,9 +82,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         headers: {
           'Accept' : 'application/json',
           'Content-Type' : 'application/json',
-          'Accept-Encoding' : 'gzip, deflate, compress',
           'Authorization': 'Bearer ' + accessToken,
-          'User-Agent' : 'Spotify API Console v0.1'
         },
         success: function(threadsResults){
           console.log(threadsResults);
