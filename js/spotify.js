@@ -48,7 +48,6 @@ function isAuth(){
     } else {
       splitTwo = splitOne[1].split('&');
       accessToken = splitTwo[0];
-      console.log(accessToken);
       $('#playlistSearch').show();
       $('#loginForm').hide();
     }
@@ -73,7 +72,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
-      console.log(data);
       parseIds(data);
     })
   }
@@ -81,16 +79,13 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   function parseIds(data) {
     for (var i = 0; i < data.length; i++){
       var userId = data[i].owner.id;
-      console.log(userId);
       var playlistId = data[i].id;
-      console.log(playlistId);
       getTracks(userId, playlistId);
     };
   }
 
 //Thank god for StackOverflow http://stackoverflow.com/questions/28617587/spotify-web-api-ajax
     function getTracks (userId, playlistId){
-      console.log(accessToken)
       $.ajax({
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
@@ -106,15 +101,19 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         });
     }
     function parseTracks (playlistTracks){
+      console.log("parsing tracks")
       for (var i = 0; i < playlistTracks.length; i++){
           var trackName = playlistTracks[i].track.name;
+          console.log(trackName)
           var trackArtist = playListTracks[i].artists.name;
           console.log(trackArtist)
           /*for (var j = 0; j < playlistTracks[i].artists.length; j++){
               trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
           }*/
           var trackAlbum = playlistTracks[i].track.album.name;
+          console.log(trackAlbum)
           var trackImage = playlistTracks[i].track.album.images[0].url;
+          console.log(trackImage)
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
