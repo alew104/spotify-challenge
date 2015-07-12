@@ -59,7 +59,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.getPlaylists = function() {
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
-      data = response;
+      data = response.items;
       console.log(data);
       parseIds(data);
     })
@@ -67,12 +67,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
 })
 
 function parseIds(data) {
-  data.map(function d(){
+  //data.map(function d(){
     //var userId = d.["owner"].["id"];
     //console.log(userId);
-    var playlistId = d["id"];
+    var playlistId = d[0].id;
     console.log(playlistId);
-  });
+  //});
 }
 
   function getTracks (userId, playlistId){
