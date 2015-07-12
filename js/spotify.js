@@ -76,14 +76,25 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   }
 
     function getTracks (userId, playlistId, $http){
-        var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks" + ' ' + '-H' + '\"Authorization: Bearer ' + accessToken +'\"';
+      $.ajax({
+        url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        method: 'GET',
+        Authorization: 'Bearer ' + accessToken,
+          success: function(threadsResults){
+            console.log(threadsResults);
+          }
+        });
+
+        /*var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks" + ' ' + '-H' + '\"Authorization: Bearer ' + accessToken +'\"';
         $http.get(tracksurl).success(function(response){
           console.log("original")
           console.log(response);
           playlistTracks = response.items.items;
           console.log("stored")
           console.log(playlistTracks);
-        })
+        })*/
     }
 })
 
