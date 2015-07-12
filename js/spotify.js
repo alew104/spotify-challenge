@@ -82,7 +82,7 @@ function parseIds(data) {
       $http.get(tracksurl).success(function(response){
         playlistTracks = $scope.items = response.items.items;
         console.log(playlistTracks);
-      }
+      })
   }
 }
 
