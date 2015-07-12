@@ -90,7 +90,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     }
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
-          console.log(playlistTracks[i]);
           var trackName = playlistTracks[i].track.name;
           /*var trackArtist = playListTracks[i].artists[0].external_urls.name;
           console.log(trackArtist)*/
@@ -98,6 +97,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
               trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
           }*/
           var trackAlbum = playlistTracks[i].track.album.name;
+
           var trackImage = playlistTracks[i].track.album.images[0].url;
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
