@@ -79,7 +79,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       $.ajax({
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
-          Authorization: 'Bearer ' + accessToken,
+          'Authorization': 'Bearer ' + accessToken,
         },
         success: function(threadsResults){
           console.log(threadsResults);
