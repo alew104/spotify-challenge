@@ -11,25 +11,41 @@
   <title>Spotify Search</title>
 </head>
 <body>
+  <div>
+    <div class = "form-group">
+      <button class = "btn btn-primary" ng-click = "loginWithSpotify()" type = "submit">Login with Spotify</button>
+    </div>
+  </div>
+
+  <!-- search form -->
   <div ng-app="myApp" ng-controller="myCtrl">
-  <form name="songForm">
+  <form name="playlistForm">
     <div class="form-group">
-      <label>Spotify search:</label>
-      <input name = "search" ng-minlength = 3 placeholder = "Enter your search.." ng-model = "track" class = "form-control" required></input>
-      <p class = "help-block" ng-show = "songForm.search.$error.minlength">Enter 3+ characters</p>
+      <label>Spotify playlist search:</label>
+      <input name = "search" ng-minlength = 3 placeholder = "Enter your search.." ng-model = "playlist" class = "form-control" required></input>
+      <p class = "help-block" ng-show = "playlistForm.search.$error.minlength">Enter 3+ characters</p>
     </div>
 
     <div class = "form-group">
-      <button ng-disabled = "songForm.search.$invalid" class = "btn btn-primary" ng-click = "getSongs()" type = "submit">Submit</button>
+      <button ng-disabled = "playlistForm.search.$invalid" class = "btn btn-primary" ng-click = "getPlaylists()" type = "submit">Submit</button>
     </div>
 
   </form>
+
+  <!-- show data -->
   <div>
+      <div class = "container-fixed">
+        <p ng-show = "tracks.length>0" class = "help-block">Click to sample</p>
+        <div   ng-repeat = " in tracks" class = "col-xs-4 img"><img ng-click = "play(track.preview_url)" title = "{{track.name}}" src = "{{track.album.images[1].url}}"></img></div>
+    </div>
+  </div>
+
+  <!-- <div>
       <div class = "container-fixed">
         <p ng-show = "tracks.length>0" class = "help-block">Click to sample</p>
         <div ng-class = "track.preview_url == currentSong ? 'playing' : ''"  ng-repeat = "track in tracks" class = "col-xs-4 img"><img ng-click = "play(track.preview_url)" title = "{{track.name}}" src = "{{track.album.images[1].url}}"></img></div>
     </div>
-    </div>
+  </div> -->
   </div>
   </div>
 </body>
