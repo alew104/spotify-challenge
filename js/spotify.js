@@ -59,7 +59,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.getPlaylists = function() {
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
-      data = response.items;
+      data = response.playlists.items;
       console.log(data);
       parseIds(data);
     })
