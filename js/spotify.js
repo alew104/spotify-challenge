@@ -105,7 +105,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       for (var i = 0; i < playlistTracks.length; i++){
           var trackName = playlistTracks[i].track.name;
           console.log(trackName)
-          var artists = playlistTracks[i].artists;
+          var artists = playlistTracks[i].artists.items;
           console.log(artists)
           var trackArtist = playListTracks[i].artists[0].name;
           console.log(trackArtist)
