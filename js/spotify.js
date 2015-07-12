@@ -8,7 +8,20 @@ var playlistTracks;
 var baseUrl = 'https://api.spotify.com/v1/search?type=playlist&query='
 var myApp = angular.module('myApp', [])
 var accessToken;
+var allTracks = {tracks:{
+  }
+};
 
+
+var jsonObj = {members: {
+            host: "hostName",
+            viewers: {
+                user1: "value1",
+                user2: "value2",
+                user3: "value3"
+            }
+        }
+}
 
 
 $(document).ready(
@@ -71,11 +84,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       console.log(userId);
       var playlistId = data[i].id;
       console.log(playlistId);
-      getTracks(userId, playlistId, $http);
+      getTracks(userId, playlistId);
     };
   }
 
-    function getTracks (userId, playlistId, $http){
+//Thank god for StackOverflow http://stackoverflow.com/questions/28617587/spotify-web-api-ajax
+    function getTracks (userId, playlistId){
       console.log(accessToken)
       $.ajax({
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
@@ -86,20 +100,34 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         },
         success: function(threadsResults){
           console.log(threadsResults);
-        }
-        /*dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        method: 'GET',*/
-        });
-
-        /*var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks" + ' ' + '-H' + '\"Authorization: Bearer ' + accessToken +'\"';
-        $http.get(tracksurl).success(function(response){
-          console.log("original")
-          console.log(response);
-          playlistTracks = response.items.items;
-          console.log("stored")
+          playlistTracks = threadsResults.items;
           console.log(playlistTracks);
-        })*/
+        }
+        });
+    }
+    function parseTracks (playlistTracks){
+      for (var i = 0; i < playlistTracks.length; i++){
+          var trackName = playlistTracks[i].track.name;
+          var trackArtist = '';
+          for (var j = 0; j < playlistTracks[i].artists.length; j++){
+              trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' ';
+          }
+          var trackAlbum = playlistTracks[i].track.album.name;
+          var trackImage = playlistTracks[i].track.album.images[0].url;
+          if (allTracks[trackName] == undefined){
+              allTracks[trackName] = {
+                  "trackName" : trackName,
+                  "trackArtist" : trackArtist,
+                  "trackAlbum" : trackAlbum,
+                  "trackImage" : trackImage,
+                  "trackCount" : 1
+              };
+              console.log(allTracks[trackName])
+          } else {
+            allTracks[trackName].trackCount++;
+            console.log(allTracks[trackName].trackCount);
+          }
+      }
     }
 })
 
