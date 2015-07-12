@@ -76,7 +76,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   }
 
     function getTracks (userId, playlistId, $http){
-        var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
+        var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks" + ' ' + '-H' + '\"Authorization: Bearer ' + accessToken +'\"';
         $http.get(tracksurl).success(function(response){
           console.log("original")
           console.log(response);
