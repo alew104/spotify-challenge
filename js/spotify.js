@@ -73,9 +73,8 @@ function parseIds(data) {
     console.log(userId);
     var playlistId = d.id;
     console.log(playlistId);
-
-
   });
+}
 
   function getTracks (userId, playlistId){
       var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
@@ -84,7 +83,7 @@ function parseIds(data) {
         console.log(playlistTracks);
       })
   }
-}
+
 
 /*var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
   $scope.audioObject = {}
