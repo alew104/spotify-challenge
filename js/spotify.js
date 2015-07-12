@@ -99,9 +99,9 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           'Authorization': 'Bearer ' + accessToken,
         },
         success: function(threadsResults){
-          console.log(threadsResults);
           playlistTracks = threadsResults.items;
           console.log(playlistTracks);
+          parseTracks(playlistTracks);
         }
         });
     }
