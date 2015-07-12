@@ -78,7 +78,8 @@ function parseIds(data) {
   function getTracks (userId, playlistId){
       var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
       $http.get(tracksurl).success(function(response){
-        playlistTracks = $scope.items = response.items.items;
+        console.log(response);
+        playlistTracks = response.items.items;
         console.log(playlistTracks);
       })
   }
