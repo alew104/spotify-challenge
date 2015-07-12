@@ -4,6 +4,7 @@
 
 
 var data;
+var playlistTracks;
 var baseUrl = 'https://api.spotify.com/v1/search?type=playlist&query='
 var myApp = angular.module('myApp', [])
 var accessToken;
@@ -56,22 +57,32 @@ loginWithSpotify = function() {
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.playlists = {};
-  console.log('1')
-
-
-
   $scope.getPlaylists = function() {
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = $scope.playlists = response.playlists.items;
       console.log(data);
-      seeData(data);
+      parseIds(data);
     })
   }
 })
 
-function seeData (data){
-  console.log(data);
+function parseIds(data) {
+  data.map(function d(){
+    var userId = d.owner.id;
+    console.log(userId);
+    var playlistId = d.id;
+    console.log(playlistId);
+
+
+  });
+
+  function getTracks (userId, playlistId){
+      var tracksurl = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks";
+      $http.get(tracksurl).success(function(response){
+        playlistTracks = $scope.items = response.items.items;
+        console.log(playlistTracks);
+  }
 }
 
 /*var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
