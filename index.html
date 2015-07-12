@@ -34,7 +34,8 @@
   </form>
   <div class = "container-fixed, results">
       <ol>
-        <li ng-repeat = "track in allTracks | orderBy: 'trackCount'">{{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+        <li ng-repeat = "track in allTracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+        <li> hi </li>
       </ol>
   </div>
 
@@ -52,7 +53,6 @@
         <div ng-class = "track.preview_url == currentSong ? 'playing' : ''"  ng-repeat = "track in tracks" class = "col-xs-4 img"><img ng-click = "play(track.preview_url)" title = "{{track.name}}" src = "{{track.album.images[1].url}}"></img></div>
     </div>
   </div> -->
-  </div>
   </div>
 </body>
 </html>
