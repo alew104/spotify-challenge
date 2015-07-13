@@ -56,12 +56,14 @@ loginWithSpotify = function() {
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
+  $scope.exposeTracks = {};
   $scope.getPlaylists = function() {
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
       //console.log(allTracks);
+      $scope.exposeTracks = allTracks;
     })
   }
 
@@ -84,7 +86,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         },
         success: function(threadsResults){
           playlistTracks = threadsResults.items;
-          console.log(playlistTracks);
           parseTracks(playlistTracks);
         }
         });
@@ -100,8 +101,8 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           var trackAlbum = playlistTracks[i].track.album.name;
 
           var trackImage = playlistTracks[i].track.album.images[0].url;
-          if ($scope.allTracks[trackName] == undefined){
-              $scope.allTracks[trackName] = {
+          if (allTracks[trackName] == undefined){
+              allTracks[trackName] = {
                   "trackName" : trackName,
                   //"trackArtist" : trackArtist,
                   "trackAlbum" : trackAlbum,
@@ -109,7 +110,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
                   "trackCount" : 1
               };
           } else {
-            $scope.allTracks[trackName].trackCount++;
+            allTracks[trackName].trackCount++;
           }
       }
     }

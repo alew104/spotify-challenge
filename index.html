@@ -34,7 +34,7 @@
   </form>
   <div class = "container-fixed, results">
       <ol>
-        <li ng-repeat = "track in allTracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+        <li ng-repeat = "(*track, trackName) | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
       </ol>
   </div>
 
