@@ -64,6 +64,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       parseIds(data);
       //console.log(allTracks);
       $scope.exposeTracks = allTracks;
+      console.log($scope.exposeTracks);
     })
   }
 
