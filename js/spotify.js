@@ -83,7 +83,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           'Authorization': 'Bearer ' + accessToken,
         },
         success: function(threadsResults){
-          playlistTracks = threadsResults.items;
+          $scope.playlistTracks = threadsResults.items;
           console.log(playlistTracks);
           parseTracks(playlistTracks);
         }
