@@ -83,7 +83,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           'Authorization': 'Bearer ' + accessToken,
         },
         success: function(threadsResults){
-          $scope.playlistTracks = threadsResults.items;
+          playlistTracks = threadsResults.items;
           console.log(playlistTracks);
           parseTracks(playlistTracks);
         }
@@ -100,8 +100,8 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           var trackAlbum = playlistTracks[i].track.album.name;
 
           var trackImage = playlistTracks[i].track.album.images[0].url;
-          if (allTracks[trackName] == undefined){
-              allTracks[trackName] = {
+          if ($scope.allTracks[trackName] == undefined){
+              $scope.allTracks[trackName] = {
                   "trackName" : trackName,
                   //"trackArtist" : trackArtist,
                   "trackAlbum" : trackAlbum,
@@ -109,7 +109,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
                   "trackCount" : 1
               };
           } else {
-            allTracks[trackName].trackCount++;
+            $scope.allTracks[trackName].trackCount++;
           }
       }
     }
