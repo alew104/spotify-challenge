@@ -31,10 +31,14 @@
       <button ng-disabled = "playlistForm.search.$invalid" class = "btn btn-primary" ng-click = "getPlaylists()" type = "submit">Submit</button>
     </div>
 
+    <div id = "fuck">
+      <script>printTracks();</script>
+    </div>
+
   </form>
   <div class = "container-fixed, results">
       <ol>
-        <li ng-repeat = "track in exposeTracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+        <li ng-repeat = "item in Tracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
       </ol>
   </div>
 

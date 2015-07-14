@@ -54,6 +54,10 @@ loginWithSpotify = function() {
         document.location = url;
 }
 
+function printTracks() {
+  $('$fuck').append('<p>' + exposeTracks + '<p>')
+}
+
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.exposeTracks = {};
