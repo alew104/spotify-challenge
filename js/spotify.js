@@ -40,7 +40,7 @@ function isAuth(){
       accessToken = splitTwo[0];
       $('#playlistSearch').show();
       $('#showResults').show();
-      $('#fuck').show();
+      $('#test').show();
       $('#loginForm').hide();
     }
 }
