@@ -57,11 +57,16 @@ loginWithSpotify = function() {
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.getPlaylists = function() {
+    $scope.exposeTracks = {};
     console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
-      //console.log(allTracks);
+      console.log("after parseIDs")
+      console.log(allTracks);
+      $scope.exposeTracks = allTracks;
+      console.log("this is exposetracks")
+      console.log($scope.exposeTracks)
     })
   }
 
@@ -84,7 +89,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         },
         success: function(threadsResults){
           playlistTracks = threadsResults.items;
-          console.log(playlistTracks);
           parseTracks(playlistTracks);
         }
         });
@@ -98,8 +102,8 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
               trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
           }*/
           var trackAlbum = playlistTracks[i].track.album.name;
-
           var trackImage = playlistTracks[i].track.album.images[0].url;
+
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
@@ -114,38 +118,3 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       }
     }
 })
-
-
-/*$.ajax({
-                url:        'https://api.spotify.com/v1/users/bbc_playlister/playlists/4ozvRrHgk23R4syZv52XNz',
-           headers: {
-             'Authorization': 'Bearer ' + access_token
-           },*/
-
-/*var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
-  $scope.audioObject = {}
-  $scope.getSongs = function() {
-    $http.get(baseUrl + $scope.track).success(function(response){
-      data = $scope.tracks = response.tracks.items
-
-    })
-  }
-  $scope.play = function(song) {
-    if($scope.currentSong == song) {
-      $scope.audioObject.pause()
-      $scope.currentSong = false
-      return
-    }
-    else {
-      if($scope.audioObject.pause != undefined) $scope.audioObject.pause()
-      $scope.audioObject = new Audio(song);
-      $scope.audioObject.play()
-      $scope.currentSong = song
-    }
-  }
-})
-
-// Add tool tips to anything with a title property
-$('body').tooltip({
-    selector: '[title]'
-}); */
