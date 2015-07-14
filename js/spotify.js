@@ -55,7 +55,7 @@ loginWithSpotify = function() {
 }
 
 function printTracks() {
-  $('$fuck').append('<p>' + exposeTracks + '<p>')
+  $('#fuck').append('<p>' + exposeTracks + '<p>')
 }
 
 
