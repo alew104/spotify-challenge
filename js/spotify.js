@@ -89,6 +89,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
 //Thank god for StackOverflow http://stackoverflow.com/questions/28617587/spotify-web-api-ajax
     function getTracks (userId, playlistId){
       $.ajax({
+        async:false,
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
           'Accept' : 'application/json',
@@ -100,9 +101,6 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           parseTracks(playlistTracks);
         }
         });
-    }
-    function printTracks() {
-      $('#fuck').append('<p>' + allTracks + '<p>')
     }
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
