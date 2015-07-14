@@ -31,9 +31,12 @@
       <button ng-disabled = "playlistForm.search.$invalid" class = "btn btn-primary" ng-click = "getPlaylists()" type = "submit">Submit</button>
     </div>
 
-    <div id = "fuck">
-      <script>printTracks();</script>
+    <div class = "form-group">
+      <button id = "showResults" class = "btn btn-primary" ng-click = "printTracks()" type = "submit"> Show Results </button>
     </div>
+
+    <ol id = "fuck">
+    </ol>
 
   </form>
   <div class = "container-fixed, results">

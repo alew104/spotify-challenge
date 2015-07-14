@@ -23,6 +23,8 @@ function initApp(){
           loginWithSpotify();
       });
   $('#playlistSearch').hide();
+  $('#fuck').hide();
+  $('#showResults').hide();
   isAuth();
 }
 
@@ -37,6 +39,8 @@ function isAuth(){
       splitTwo = splitOne[1].split('&');
       accessToken = splitTwo[0];
       $('#playlistSearch').show();
+      $('#showResults').show();
+      $('#fuck').show();
       $('#loginForm').hide();
     }
 }
