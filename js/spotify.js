@@ -63,17 +63,11 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
-<<<<<<< HEAD
       console.log("after parseIDs")
       console.log(allTracks);
       $scope.exposeTracks = allTracks;
       console.log("this is exposetracks")
       console.log($scope.exposeTracks)
-=======
-      //console.log(allTracks);
-      $scope.exposeTracks = allTracks;
-      console.log($scope.exposeTracks);
->>>>>>> origin/master
     })
   }
 
