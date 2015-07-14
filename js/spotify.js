@@ -69,26 +69,31 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
-      console.log("after parseIDs")
-      console.log(allTracks);
-      $scope.exposeTracks = allTracks;
-      console.log("this is exposetracks")
-      console.log($scope.exposeTracks)
-      printTracks();
+      // console.log("after parseIDs")
+      // console.log(allTracks);
+      // $scope.exposeTracks = allTracks;
+      // console.log("this is exposetracks")
+      // console.log($scope.exposeTracks)
+      // printTracks();
     })
   }
 
   function parseIds(data) {
+    var requests = []
     for (var i = 0; i < data.length; i++){
       var userId = data[i].owner.id;
       var playlistId = data[i].id;
-      getTracks(userId, playlistId);
+      requests.push(getTracks(userId, playlistId));
     };
+    $.when(requests).done(function() {
+      $scope.exposeTracks = allTracks;
+      console.log("got it ", $scope.exposeTracks)
+    })
   }
 
 //Thank god for StackOverflow http://stackoverflow.com/questions/28617587/spotify-web-api-ajax
     function getTracks (userId, playlistId){
-      $.ajax({
+      return $.ajax({
         async:false,
         url: "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks",
         headers: {
