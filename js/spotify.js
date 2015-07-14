@@ -54,9 +54,7 @@ loginWithSpotify = function() {
         document.location = url;
 }
 
-function printTracks() {
-  $('#fuck').append('<p>' + exposeTracks + '<p>')
-}
+
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
@@ -72,6 +70,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       $scope.exposeTracks = allTracks;
       console.log("this is exposetracks")
       console.log($scope.exposeTracks)
+      printTracks();
     })
   }
 
@@ -97,6 +96,9 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           parseTracks(playlistTracks);
         }
         });
+    }
+    function printTracks() {
+      $('#fuck').append('<p>' + allTracks + '<p>')
     }
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
