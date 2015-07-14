@@ -34,8 +34,12 @@
   </form>
   <div class = "container-fixed, results">
       <ol>
+<<<<<<< HEAD
         <li ng-repeat = "track in exposeTracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
         <li> hi </li>
+=======
+        <li ng-repeat = "(*track, trackName) | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+>>>>>>> origin/master
       </ol>
   </div>
 
