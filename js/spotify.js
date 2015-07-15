@@ -77,6 +77,7 @@ myApp.filter('orderObjectBy', function() {
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
+  $scope.audioObject = {}
   $scope.getPlaylists = function() {
     allTracks = {tracks:{
       }
@@ -124,6 +125,20 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
         }
         });
     }
+
+    $scope.play = function(song) {
+      if($scope.currentSong == song) {
+        $scope.audioObject.pause()
+        $scope.currentSong = false
+        return
+      } else {
+        if($scope.audioObject.pause != undefined) $scope.audioObject.pause()
+        $scope.audioObject = new Audio(song);
+        $scope.audioObject.play()
+        $scope.currentSong = song
+      }
+    }
+
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           console.log(i);
@@ -135,12 +150,16 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
             for (var j = 1; j < playlistTracks[i].track.artists.length; j++){
                 trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
             }
+
             var trackAlbum = playlistTracks[i].track.album.name;
+
             if (playlistTracks[i].track.album.images.length == 0 || playlistTracks[i].track.album.images[0].url == undefined){
               var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.png"
             } else {
               var trackImage = playlistTracks[i].track.album.images[0].url;
             }
+
+            var trackPreview = playlistTracks[i].track.preview_url;
 
             if (allTracks[trackName] == undefined){
                 allTracks[trackName] = {
@@ -148,6 +167,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
                     "trackArtist" : trackArtist,
                     "trackAlbum" : trackAlbum,
                     "trackImage" : trackImage,
+                    "trackPreview" : trackPreview,
                     "trackCount" : 1
                 };
             } else {
