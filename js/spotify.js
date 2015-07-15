@@ -65,7 +65,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.exposeTracks = {};
   $scope.getPlaylists = function() {
     $scope.exposeTracks = {};
-    console.log('getting playlists');
+    //console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
       data = response.playlists.items;
       parseIds(data);
@@ -110,18 +110,21 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           var trackName = playlistTracks[i].track.name;
-          /*var trackArtist = playListTracks[i].artists[0].external_urls.name;
-          console.log(trackArtist)*/
-          /*for (var j = 0; j < playlistTracks[i].artists.length; j++){
-              trackArtist = trackArtist + playlistTracks[i].artists[j].name + ' & ';
-          }*/
+          var trackArtist = playListTracks[i].track.artists[0].external_urls.name;
+          for (var j = 1; j < playlistTracks[i].artists.length; j++){
+              trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
+          }
           var trackAlbum = playlistTracks[i].track.album.name;
-          var trackImage = playlistTracks[i].track.album.images[0].url;
+          if (playListTracks[i].track.album.images[0].url = undefined){
+            var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
+          } else {
+            var trackImage = playlistTracks[i].track.album.images[0].url;
+          }
 
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
-                  //"trackArtist" : trackArtist,
+                  "trackArtist" : trackArtist,
                   "trackAlbum" : trackAlbum,
                   "trackImage" : trackImage,
                   "trackCount" : 1

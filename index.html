@@ -41,7 +41,7 @@
   </form>-->
   <div class = "container-fixed, results">
       <ol>
-        <li ng-repeat = "track in exposeTracks | orderBy: 'trackCount'"> {{track.trackName}} {{track.trackAlbum}} {{track.trackCount}}</li>
+        <li ng-repeat = "track in exposeTracks | orderBy: 'trackCount'"><img ng-src="{{track.trackImage}}" alt="Album Art" /> {{track.trackName}} {{track.trackArtist}} {{track.trackAlbum}} {{track.trackCount}}</li>
       </ol>
   </div>
 
