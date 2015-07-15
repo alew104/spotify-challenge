@@ -25,7 +25,7 @@
   <div ng-app="myApp" ng-controller="myCtrl">
   <form id = "playlistSearch" name="playlistForm">
     <div class="form-group">
-      <label>Spotify playlist search:</label>
+      <label>Find the most popular tracks from any kind of playlist:</label>
       <input name = "search" ng-minlength = 3 placeholder = "Enter your search.." ng-model = "playlist" class = "form-control" required></input>
       <p class = "help-block" ng-show = "playlistForm.search.$error.minlength">Enter 3+ characters</p>
     </div>
