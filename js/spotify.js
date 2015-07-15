@@ -112,7 +112,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
           console.log(i);
           var trackName = playlistTracks[i].track.name;
           var trackArtist = playlistTracks[i].track.artists[0].name;
-          for (var j = 1; j < playlistTracks[i].artists.length; j++){
+          for (var j = 1; j < playlistTracks[i].track.artists.length; j++){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
           }
           var trackAlbum = playlistTracks[i].track.album.name;
