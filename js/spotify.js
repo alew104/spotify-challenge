@@ -127,7 +127,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
                   "trackName" : trackName,
                   //"trackArtist" : trackArtist,
                   //"trackAlbum" : trackAlbum,
-                  "trackImage" : trackImage,
+                  //"trackImage" : trackImage,
                   "trackCount" : 1
               };
           } else {
