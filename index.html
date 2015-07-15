@@ -3,10 +3,13 @@
 <head>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Karla:400,700|Inconsolata' rel='stylesheet' type='text/css'>
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 <script src="js/spotify.js"></script>
+<link href="spotify.css" rel="stylesheet" type="text/css" />
+
   <meta charset="utf-8">
   <title>Spotify Search</title>
 </head>
@@ -31,17 +34,9 @@
       <button ng-disabled = "playlistForm.search.$invalid" class = "btn btn-primary" ng-click = "getPlaylists()" type = "submit">Submit</button>
     </div>
 
-  <!--   <div class = "form-group">
-      <button id = "showResults" class = "btn btn-primary" ng-click = "printTracks()" type = "submit"> Show Results </button>
-    </div>
-
-    <ol id = "fuck">
-    </ol>
-
-  </form>-->
   <div class = "container-fixed, results">
         <div ng-repeat = "track in exposeTracks | orderObjectBy:'trackCount':true | limitTo: 100">
-          <img ng-src="{{track.trackImage}}" height = '100' width = '100' alt="Album Art" />
+          <img ng-src="{{track.trackImage}}" alt="Album Art" />
             <div>
               <p>{{track.trackName}}</p>
               <p>{{track.trackArtist}}</p>
