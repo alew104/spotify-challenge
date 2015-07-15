@@ -18,11 +18,13 @@ img {
   width: 300px !important;
   height: 300px !important;
   cursor:pointer !important;
+  margin-bottom: 10px;
 }
 
 .descAttr{
   /*display: inline-block;*/
-  padding-top: -10px !important;
+  padding-top: -20px !important;
+  margin-bottom: 10px;
 
 }
 
