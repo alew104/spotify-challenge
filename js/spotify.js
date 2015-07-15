@@ -23,7 +23,6 @@ function initApp(){
           loginWithSpotify();
       });
   $('#playlistSearch').hide();
-  $('#fuck').hide();
   $('#showResults').hide();
   isAuth();
 }
