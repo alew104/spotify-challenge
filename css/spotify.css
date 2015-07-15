@@ -1,5 +1,4 @@
 body {
-  padding: 10px;
   background-color: #202020;
   color: #FFFFFF;
   font-family: 'Karla', Arial, sans-serif;
@@ -26,7 +25,7 @@ h1{
 }
 
 
-.btn.btn-primary {
+button {
   background-color: rgb(132, 189, 0);
   border-color: rgb(132, 189, 0);
 }
