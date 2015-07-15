@@ -116,18 +116,18 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
           }*/
           var trackAlbum = playlistTracks[i].track.album.name;
-          if (playListTracks[i].track.album.imagess = undefined){
+          if (playListTracks[i].track.album.images = undefined){
             var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
           } else {
             var trackImage = playlistTracks[i].track.album.images[0].url;
-          }*/
+          }
 
           if (allTracks[trackName] == undefined){
               allTracks[trackName] = {
                   "trackName" : trackName,
                   //"trackArtist" : trackArtist,
                   "trackAlbum" : trackAlbum,
-                  //"trackImage" : trackImage,
+                  "trackImage" : trackImage,
                   "trackCount" : 1
               };
           } else {
