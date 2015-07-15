@@ -116,7 +116,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
           }
           var trackAlbum = playlistTracks[i].track.album.name;
-          if (playlistTracks[i].track.album.images == undefined){
+          if (playlistTracks[i].track.album.images[0].url == undefined){
             var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
           } else {
             var trackImage = playlistTracks[i].track.album.images[0].url;
