@@ -127,33 +127,32 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           console.log(i);
-          if (playlistTracks[i].track.name == null){
-            var trackName = "UNKNOWN"
+          if (playlistTracks[i].track == null){
+            //do nothing
           } else {
             var trackName = playlistTracks[i].track.name;
-          }
+            var trackArtist = playlistTracks[i].track.artists[0].name;
+            for (var j = 1; j < playlistTracks[i].track.artists.length; j++){
+                trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
+            }
+            var trackAlbum = playlistTracks[i].track.album.name;
+            if (playlistTracks[i].track.album.images.length == 0 || playlistTracks[i].track.album.images[0].url == undefined){
+              var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
+            } else {
+              var trackImage = playlistTracks[i].track.album.images[0].url;
+            }
 
-          var trackArtist = playlistTracks[i].track.artists[0].name;
-          for (var j = 1; j < playlistTracks[i].track.artists.length; j++){
-              trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
-          }
-          var trackAlbum = playlistTracks[i].track.album.name;
-          if (playlistTracks[i].track.album.images.length == 0 || playlistTracks[i].track.album.images[0].url == undefined){
-            var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
-          } else {
-            var trackImage = playlistTracks[i].track.album.images[0].url;
-          }
-
-          if (allTracks[trackName] == undefined){
-              allTracks[trackName] = {
-                  "trackName" : trackName,
-                  "trackArtist" : trackArtist,
-                  "trackAlbum" : trackAlbum,
-                  "trackImage" : trackImage,
-                  "trackCount" : 1
-              };
-          } else {
-            allTracks[trackName].trackCount++;
+            if (allTracks[trackName] == undefined){
+                allTracks[trackName] = {
+                    "trackName" : trackName,
+                    "trackArtist" : trackArtist,
+                    "trackAlbum" : trackAlbum,
+                    "trackImage" : trackImage,
+                    "trackCount" : 1
+                };
+            } else {
+              allTracks[trackName].trackCount++;
+            }
           }
       }
     }
