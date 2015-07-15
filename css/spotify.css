@@ -10,7 +10,9 @@ h1{
   font-size: 20px;
 }
 
-
+.results{
+  width: 70%;
+}
 img {
   background-color: #000000;
   /*padding:10px;*/
