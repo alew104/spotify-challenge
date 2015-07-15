@@ -127,7 +127,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           console.log(i);
-          var trackName = playlistTracks[i].track.name;
+          if (playlistTracks[i].track.name == null){
+            var trackName = "UNKNOWN"
+          } else {
+            var trackName = playlistTracks[i].track.name;
+          }
+
           var trackArtist = playlistTracks[i].track.artists[0].name;
           for (var j = 1; j < playlistTracks[i].track.artists.length; j++){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;

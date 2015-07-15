@@ -21,7 +21,7 @@ h1{
 }
 
 .descAttr{
-  float: right;
+  display: inline-block
 }
 
 
