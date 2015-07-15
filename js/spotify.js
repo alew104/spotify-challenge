@@ -78,6 +78,9 @@ myApp.filter('orderObjectBy', function() {
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
   $scope.exposeTracks = {};
+  allTracks = {tracks:{
+    }
+  };
   $scope.getPlaylists = function() {
     $scope.exposeTracks = {};
     //console.log('getting playlists');
