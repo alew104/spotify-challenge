@@ -110,7 +110,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
     function parseTracks (playlistTracks){
       for (var i = 0; i < playlistTracks.length; i++){
           var trackName = playlistTracks[i].track.name;
-          var trackArtist = playListTracks[i].track.artists[0].external_urls.name;
+          var trackArtist = playListTracks[i].track.artists[0].name;
           for (var j = 1; j < playlistTracks[i].artists.length; j++){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
           }
