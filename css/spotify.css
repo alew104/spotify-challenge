@@ -6,15 +6,8 @@ body {
   font-size: 18px;
 }
 
-.page-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-.page-desc {
-  color: #FFFFFF;
-  margin-bottom: 20px;
+h1{
+  font-size: 50px;
 }
 
 .img {
@@ -35,47 +28,7 @@ img {
   height: 300px;
 }
 
-.container-fixed {
-  width:100%;
-  margin-left:0%;
-  text-align:center;
-}
-
-.playing {
-  background-color: #E0E0E0;
-}
-
-.form-group {
-
-}
-
-.form-control {
-  width: 66.66666%;
-}
-
 .btn.btn-primary {
   background-color: rgb(132, 189, 0);
   border-color: rgb(132, 189, 0);
-}
-
-.spotifyGreen {
-  color: #000000;
-}
-
-.help-block {
-  text-align: left;
-  font-size: 18px;
-  color: #606060;
-}
-
-.help-block.ng-binding {
-  width: 66.66666%;
-  text-align: left;
-  font-family: 'Karla', Arial, sans-serif;
-  font-size: 24px;
-  color: #FFFFFF;
-}
-
-#header-content {
-  width: 66.666666666%;
 }
