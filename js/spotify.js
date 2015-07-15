@@ -77,11 +77,10 @@ myApp.filter('orderObjectBy', function() {
 
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http){
-  $scope.exposeTracks = {};
-  allTracks = {tracks:{
-    }
-  };
   $scope.getPlaylists = function() {
+    allTracks = {tracks:{
+      }
+    };
     $scope.exposeTracks = {};
     //console.log('getting playlists');
     $http.get(baseUrl + $scope.playlist).success(function(response){
