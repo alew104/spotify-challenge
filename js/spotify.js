@@ -111,14 +111,14 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
       for (var i = 0; i < playlistTracks.length; i++){
           console.log(i);
           var trackName = playlistTracks[i].track.name;
-          var trackArtist = playListTracks[i].track.artists[0].name;
+          var trackArtist = playlistTracks[i].track.artists[0].name;
           for (var j = 1; j < playlistTracks[i].artists.length; j++){
               trackArtist = trackArtist + '&' + playlistTracks[i].track.artists[j].name;
           }
           var trackAlbum = playlistTracks[i].track.album.name;
-          if (playListTracks[i].track.album.images == undefined){
+          if (playlistTracks[i].track.album.images == undefined){
             var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
-          } else {s
+          } else {
             var trackImage = playlistTracks[i].track.album.images[0].url;
           }
 
