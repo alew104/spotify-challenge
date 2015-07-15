@@ -137,7 +137,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http){
             }
             var trackAlbum = playlistTracks[i].track.album.name;
             if (playlistTracks[i].track.album.images.length == 0 || playlistTracks[i].track.album.images[0].url == undefined){
-              var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.jpg"
+              var trackImage = "http://students.washington.edu/alew104/info343/spotify-challenge/images/noalbumart.png"
             } else {
               var trackImage = playlistTracks[i].track.album.images[0].url;
             }
