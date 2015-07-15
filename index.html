@@ -35,7 +35,7 @@
 
   <div class = "container-fixed, results">
         <div class = "row" ng-repeat = "track in exposeTracks | orderObjectBy:'trackCount':true | limitTo: 100">
-          <img class = "img, col-md-4" ng-src="{{track.trackImage}}" alt="Album Art" />
+          <img class = "img, col-md-4" height = '200' width = '200' ng-src="{{track.trackImage}}" alt="Album Art" />
             <div class = "descAttr, col-md-8">
               <h1>Song: </h1> <p>{{track.trackName}}</p>
               <h1>Artist: </h1> <p>{{track.trackArtist}}</p>
