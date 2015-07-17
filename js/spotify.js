@@ -46,7 +46,7 @@ function isAuth(){
 
 
 loginWithSpotify = function() {
-    var client_id = '62283e59b09041c0b318be64e97ae046';
+    var client_id = '';
     var redirect_uri = 'http://students.washington.edu/alew104/info343/spotify-challenge/index.html';
     var scopes = 'playlist-modify-public';
 
